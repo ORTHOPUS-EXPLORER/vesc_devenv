@@ -1,4 +1,5 @@
 vesc_bldc/
 vesc_tool/
+VESC_scripts_configs/
 build/
 
