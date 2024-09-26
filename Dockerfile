@@ -18,6 +18,13 @@ RUN apt install -y qtconnectivity5-dev
 RUN apt install -y libqt5svg5-dev
 RUN apt install -y libqt5serialbus5-dev
 RUN apt install -y qtbase5-private-dev
+RUN apt install -y qml-module-qtquick-controls2
+RUN apt install -y qml-module-qtquick-layouts
+RUN apt install -y qml-module-qtquick-window2
+RUN apt install -y qml-module-qtquick-layouts
+RUN apt install -y qt5-quick-demos #TODO: check if necessary
+RUN apt install -y qml
+RUN apt install -y qml-module-* #TODO: install only required, fid missing ones in the list
 
 
 COPY . ./src/
