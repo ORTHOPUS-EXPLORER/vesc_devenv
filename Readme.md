@@ -29,13 +29,20 @@ you will en up in a shell inside your contaier (CONT), showing something like:
 root@thomas-Precision-3560:/src#
 ```
 
+If you need another terminal inside the container, you can use:
+
+```
+(CONT)
+./docker-exec-vesc.sh
+```
+
 ## VESC_tool:
 
 build vesc_tool (this will take a while)
 
 ```
 (CONT)
-./buildvesc_tool.sh
+./build_vesc_tool.sh
 ```
 
 now, you can run VESC_tool using:
@@ -51,9 +58,17 @@ the VESC_tool GUI should start. You can connect with USB or CAN (setup CAN bus w
 
 Still in the container, you can build the firmware:
 
+install the sdk (need to do it only once):
 ```
 (CONT)
-make_fw_a50s_v23c_8s.sh
+./install_sdk.sh
+```
+
+build the firmware for actuators V3
+
+```
+(CONT)
+./make_fw_a50s_v23c_8s.sh
 ```
 
 you can flash this firmware with VESC_tool, it has been copied in the build/ folder.
