@@ -21,7 +21,7 @@ build the docker image that will contain the toolchain required to build vesc_to
 run container:
 ```
 (HOST)
-docker-run-vesc.sh
+./docker-run-vesc.sh
 ```
 you will en up in a shell inside your contaier (CONT), showing something like:
 
@@ -73,3 +73,50 @@ build the firmware for actuators V3
 
 you can flash this firmware with VESC_tool, it has been copied in the build/ folder.
 
+
+## Troubleshooting :
+
+### Controller not responding - impossible to connect even with USB
+
+First you can check if the controller enumerate correctly: Plug in a USB cable directly on the actuator controller, make sure that at least one LED is ON (if not, check your USB cable).
+
+Run the command:
+```
+sudo dmesg
+```
+
+If everything is fine, it should return something like:
+
+![](docs/dmesg.png)
+
+If it is not recognized as a USB ACM device, there might be an issue with the firmware, you can flash it with an STM32 programmer (see dedicated section)
+
+## Flash with VESC_tool :
+
+Before flashing, you might want to backup your motorconf, appconf and orthopus conf XML files to set those back later
+
+1. connect to the actuator (USB or CAN)
+2. Go to the "firmware section" and select "Custom File"
+3. If you built the firmware with the script `make_fw_a50s_v23c_8s.sh` , the firmware to use is in `/src/build/a50s_v23c_8s.hex`
+4. Click on the update firmware button next to the progress bar
+5. wait during the flash process, do not unplug
+6. Once the flash process is done, wait 30s to let it reboot and you can connect to it again.
+
+Don't forget to restore the configurations.
+
+![](docs/flash_firmware.svg)
+
+## Flash with STM32 programmer :
+
+You will need a STLINK programmer. We currently use an STLINK-V3MINIE
+
+Install STM32 Cube programmer:
+https://www.st.com/en/development-tools/stm32cubeprog.html
+
+connect to the target, choose the firmware hex file and flash:
+
+![](docs/stm32cubeprog.svg)
+
+If the connection fails, check your cables, there should be some LEDS ON on the controller and the STLINK. If everything is properly connected and still can't connect, the controller might be damaged.
+
+After you flashed the firmware, you should be able to see correct output of dmesg and connect with VESC_tool.
