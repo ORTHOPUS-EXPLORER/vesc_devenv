@@ -110,6 +110,8 @@ Don't forget to restore the configurations.
 
 You will need a STLINK programmer. We currently use an STLINK-V3MINIE
 
+![](docs/stlink.png)
+
 Install STM32 Cube programmer:
 https://www.st.com/en/development-tools/stm32cubeprog.html
 
