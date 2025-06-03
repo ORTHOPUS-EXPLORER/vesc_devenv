@@ -1,5 +1,6 @@
 #! /bin/bash
 
+mkdir -p build
 cd vesc_firmware/
 make fw_edu
 cd ..
