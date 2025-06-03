@@ -122,3 +122,18 @@ connect to the target, choose the firmware hex file and flash:
 If the connection fails, check your cables, there should be some LEDS ON on the controller and the STLINK. If everything is properly connected and still can't connect, the controller might be damaged.
 
 After you flashed the firmware, you should be able to see correct output of dmesg and connect with VESC_tool.
+
+## Developers :
+### Add a parameter to the ORTHOPUS config:  
+- add the paramter to orthopus_config_t
+- in VESC_tool, go to Developper/Parameter Editor Custom conf 0 (with a VESC plugged with the current firmware if you want to take this config as default, otherwise, load XML orthopus_settings.xml)
+- in the central screen, replace new_parameter with yours, you xan set the type, the default value and boundaries. Name is the variable name (the same you set in orthopus_config_t), Long Name is the displayed name
+- in Misc, set the C Definre: ORTHOPUS_CFG_DEF_YOUR_VARIABLE_NAME
+- save and then check everything looks good in Preview tab
+- on the left column, place your parameter at the end of the list
+- on the right column, add it ti the serialization with +
+- in the Grouping tab, add your parameter in a category (or create one) so that it will appear in VESC_tool
+- in Tools/Save XML and export config, ... -> choose your orthopus_settings.xml file to replace
+- it will ask for a prefix, set "orthopus_"
+- in applications/orthopus/_gen, you should see all the files modified, with your parameter added, the signature modified other files updated.
+- Flash and test.
