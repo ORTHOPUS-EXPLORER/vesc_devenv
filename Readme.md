@@ -121,7 +121,24 @@ connect to the target, choose the firmware hex file and flash:
 
 If the connection fails, check your cables, there should be some LEDS ON on the controller and the STLINK. If everything is properly connected and still can't connect, the controller might be damaged.
 
-After you flashed the firmware, you should be able to see correct output of dmesg and connect with VESC_tool.
+After you flashed the firmware, you should be able to see correct output of dmesg and connect with VESC_tool.  
+  
+## Flash USB can UCAN interface :
+
+in candleLight_fw folder:
+```
+sudo apt-get install gcc-arm-none-eabi
+
+mkdir build
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/gcc-arm-none-eabi-8-2019-q3-update.cmake ```
+
+Plug-in the interfact to flash and run:  
+
+```
+make flash-FYSETC_UCAN_fw
+```
+
 
 ## Developers :
 ### Add a parameter to the ORTHOPUS config:  

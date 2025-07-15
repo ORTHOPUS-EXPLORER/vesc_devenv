@@ -4,3 +4,4 @@ VESC_scripts_configs/
 build/
 log/
 .vscode/
+candleLight_fw/
