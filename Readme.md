@@ -145,7 +145,7 @@ make flash-FYSETC_UCAN_fw
 - add the paramter to orthopus_config_t
 - in VESC_tool, go to Developper/Parameter Editor Custom conf 0 (with a VESC plugged with the current firmware if you want to take this config as default, otherwise, load XML orthopus_settings.xml)
 - in the central screen, replace new_parameter with yours, you xan set the type, the default value and boundaries. Name is the variable name (the same you set in orthopus_config_t), Long Name is the displayed name
-- in Misc, set the C Definre: ORTHOPUS_CFG_DEF_YOUR_VARIABLE_NAME
+- in Misc, set the C Definre: ORTHOPUS_CFG_DEF_YOUR_VARIABLE_NAME. Make sure you don't add a space before the C Define!
 - save and then check everything looks good in Preview tab
 - on the left column, place your parameter at the end of the list
 - on the right column, add it ti the serialization with +
